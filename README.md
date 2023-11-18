@@ -1,5 +1,7 @@
 # Tiny Memo
 
+![画面イメージ](https://github.com/tris5572/tauri-tiny-memo/assets/68403260/e76605c1-16ff-4d00-8859-050385360793)
+
 押されたキーを記録するだけの超シンプルなメモアプリです。
 
 Tauri + React を使って Rust で書かれています。（Rust で特に何かをしているわけではありませんが）
