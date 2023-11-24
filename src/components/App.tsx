@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import "./App.css";
 
 function App() {
@@ -9,6 +9,8 @@ function App() {
   //   // Learn more about Tauri commands at https://tauri.app/v1/guides/features/command
   //   setGreetMsg(await invoke("greet", { name }));
   // }
+
+  const buttonRef = useRef<HTMLButtonElement>(null);
 
   function onKey(ev: KeyboardEvent) {
     const key = ev.key;
@@ -25,8 +27,10 @@ function App() {
     }
   }
 
+  /** クリアボタンが押されたときに動作。 */
   function onClear() {
     setText("");
+    buttonRef.current?.blur(); // ボタンからフォーカスを外す(Issue #1)
   }
 
   useEffect(() => {
@@ -52,6 +56,7 @@ function App() {
       <p style={{ fontSize: "24px" }}>{text.length === 0 ? "　" : text}</p>
       <button
         style={{ fontSize: "small", padding: "0px 1rem" }}
+        ref={buttonRef}
         onClick={onClear}
       >
         Clear
